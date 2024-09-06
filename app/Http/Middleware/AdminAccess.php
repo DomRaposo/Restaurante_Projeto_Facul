@@ -15,12 +15,9 @@ class AdminAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->check() AND auth()->admin)
-        {
+        if(auth()->check() AND auth()->user()->admin){
             return $next($request);
-            dd('Acesso negado,voce não é ADM');
         }
-
-
+       dd('acesso negado, voce não é admin');
     }
 }
